@@ -1,5 +1,10 @@
-package ru.metlin.message_service.registration;
+package ru.metlin.message_service.registration.model;
 
+import ru.metlin.message_service.registration.RegistrationRequest;
+
+import javax.persistence.Entity;
+
+@Entity
 public class User {
 
     private Long id;
@@ -8,6 +13,14 @@ public class User {
     private String email;
     private String login;
     private String password;
+
+    public User(RegistrationRequest request) {
+        this.firstName = request.getFirstName();
+        this.lastName = request.getLastName();
+        this.email = request.getEmail();
+        this.login = request.getLogin();
+        this.password = request.getPassword();
+    }
 
     public Long getId() {
         return id;
