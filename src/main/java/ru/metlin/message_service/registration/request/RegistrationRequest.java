@@ -1,4 +1,4 @@
-package ru.metlin.message_service.registration;
+package ru.metlin.message_service.registration.request;
 
 public class RegistrationRequest {
 

@@ -1,6 +1,6 @@
 package ru.metlin.message_service.registration.model;
 
-import ru.metlin.message_service.registration.RegistrationRequest;
+import ru.metlin.message_service.registration.request.RegistrationRequest;
 
 import javax.persistence.Entity;
 
@@ -80,5 +80,27 @@ public class User {
                 " login -     " + login +
                 " password -  " + password +
                 " }";
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (object == null) {
+            return false;
+        }
+
+        if (!(object instanceof User)) {
+            return false;
+        }
+
+        if (login.equals(((User) object).login) && password.equals(((User) object).password)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return  31 * login.hashCode() + 31 * password.hashCode();
     }
 }

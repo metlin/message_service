@@ -2,7 +2,7 @@ package ru.metlin.message_service.registration.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.metlin.message_service.registration.RegistrationRequest;
+import ru.metlin.message_service.registration.request.RegistrationRequest;
 import ru.metlin.message_service.registration.dao.RegistrationDao;
 import ru.metlin.message_service.registration.model.User;
 
@@ -20,7 +20,9 @@ public class RegistrationService {
 
         // validation here
 
-        // сравнение по equals & hashCode c объектами базы
+        // Set<User> users = registrationDao.findAll();
+        // if (users.containsTo(request)) throw Exception e;
+        // e.getMessage("This user already exists");
 
         User user = new User(request);
 
