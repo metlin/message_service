@@ -22,6 +22,9 @@ public class User {
         this.password = request.getPassword();
     }
 
+    public User() {
+    }
+
     public Long getId() {
         return id;
     }

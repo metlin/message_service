@@ -6,13 +6,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import ru.metlin.message_service.registration.request.RegistrationRequest;
-import ru.metlin.message_service.registration.service.RegistrationService;
 
 @Controller
 public class RegistrationController {
 
-    private RegistrationService registrationService;
+/*    private RegistrationService registrationService;
 
     @Autowired
     public RegistrationController(RegistrationService registrationService) {
@@ -21,12 +19,12 @@ public class RegistrationController {
 
     public RegistrationController() {
     }
+*/
+    @RequestMapping(value = "/hello")
+    public String hello() {
 
-    @RequestMapping(value = "/")
-    public String registration(RegistrationRequest request) {
-
-        return "registration";
+        return "index";
       //  return registrationService.save(request);
-       // return "webapp/pages/registration.jsp";
+       // return "webapp/pages/index.jsp";
     }
 }
