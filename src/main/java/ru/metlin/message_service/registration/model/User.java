@@ -22,6 +22,18 @@ public class User {
         this.password = request.getPassword();
     }
 
+    /**
+     * Коструктор для тестовой работы dao без
+     * базы данных, ПОТОМ УБРАТЬ
+     */
+    public User(String firstName, String lastName, String email, String login, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.login = login;
+        this.password = password;
+    }
+
     public User() {
     }
 
@@ -76,7 +88,7 @@ public class User {
     @Override
     public String toString() {
         return "User {" +
-                " id -        " + id +
+            //    " id -        " + id +
                 " firstName - " + firstName +
                 " lastName -  " + lastName +
                 " email -     " + email +
