@@ -2,16 +2,33 @@ package ru.metlin.message_service.registration.model;
 
 import ru.metlin.message_service.registration.request.RegistrationRequest;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class User {
 
+    @Id
+    @Column(name = "user_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column(name = "first_name")
     private String firstName;
+
+    @Column(name = "last_name")
     private String lastName;
+
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "login")
     private String login;
+
+    @Column(name = "password")
     private String password;
 
     public User(RegistrationRequest request) {

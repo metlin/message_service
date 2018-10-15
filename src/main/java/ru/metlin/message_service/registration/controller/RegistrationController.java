@@ -1,6 +1,5 @@
 package ru.metlin.message_service.registration.controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,8 +41,9 @@ public class RegistrationController {
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public void save(@ModelAttribute RegistrationRequest request) {
-        System.out.println(request.getFirstName());
+    public  String save(@ModelAttribute RegistrationRequest request) {
+        registrationService.addUser(request);
+        return "redirect:/page/list";
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
