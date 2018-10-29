@@ -27,6 +27,6 @@ public class AuthorizationController {
     @RequestMapping(value = "/search", method = RequestMethod.POST)
     public String search(@ModelAttribute AuthorizationRequest request) {
         authorizationService.searchByLoginAndPassword(request);
-        return "redirect:/page/list";
+        return "redirect:/page/index";
     }
 }

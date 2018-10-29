@@ -1,14 +1,20 @@
 package ru.metlin.message_service.registration.model;
 
+import ru.metlin.message_service.index.model.Message;
 import ru.metlin.message_service.registration.request.RegistrationRequest;
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import java.util.Set;
 
 @Entity
+@Table(name = "user")
 public class User {
 
     @Id
@@ -30,6 +36,9 @@ public class User {
 
     @Column(name = "password")
     private String password;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Message> messageList;
 
     public User(RegistrationRequest request) {
         this.firstName = request.getFirstName();
@@ -100,6 +109,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Set<Message> getMessageList() {
+        return messageList;
+    }
+
+    public void setMessageList(Set<Message> messageList) {
+        this.messageList = messageList;
     }
 
     @Override

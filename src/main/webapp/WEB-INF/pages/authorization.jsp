@@ -24,4 +24,9 @@
   </table>
 </form:form>
 </body>
+
+    <body>
+        <a href ="/message_service/page/registration">Registration page</a>
+    </body>
+
 </html>

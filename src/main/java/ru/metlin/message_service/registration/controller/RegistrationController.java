@@ -29,12 +29,6 @@ public class RegistrationController {
     public RegistrationController() {
     }
 
-    @RequestMapping(value = "/hello")
-    public String hello() {
-
-        return "index";
-    }
-
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public ModelAndView registration() {
         return new ModelAndView("registration","command", new RegistrationRequest());
