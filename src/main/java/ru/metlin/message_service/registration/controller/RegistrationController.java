@@ -13,8 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 import ru.metlin.message_service.registration.model.User;
 import ru.metlin.message_service.registration.request.RegistrationRequest;
 import ru.metlin.message_service.registration.service.RegistrationService;
+import java.util.List;
 
-import java.util.Set;
 
 @Controller
 public class RegistrationController {
@@ -36,12 +36,13 @@ public class RegistrationController {
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public  String save(@ModelAttribute RegistrationRequest request) {
-        registrationService.addUser(request);
-        return "redirect:/page/list";
+        User user = registrationService.addUser(request);
+
+        return "redirect:/page/index/" + user.getId();
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public @ResponseBody Set<User> getAllUsers() {
+    public @ResponseBody List<User> getAllUsers() {
         return registrationService.getUsers();
     }
 }

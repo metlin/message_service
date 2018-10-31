@@ -3,8 +3,11 @@ package ru.metlin.message_service.index.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import ru.metlin.message_service.index.model.Message;
 import ru.metlin.message_service.index.service.IndexService;
 
@@ -18,11 +21,24 @@ public class IndexController {
         this.indexService = indexService;
     }
 
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
-    public String index(Model model) {
+    @RequestMapping(value = "/index/{id}", method = RequestMethod.GET)
+    public String index(Model model, @PathVariable("id") Long id) {
         model.addAttribute("message", new Message());
-        model.addAttribute("messageList", indexService.messageList());
+        model.addAttribute("messageList", indexService.messageList(id));
 
         return "index";
+    }
+
+    @RequestMapping(value = "/remove/{id}", method = RequestMethod.GET)
+    public String remove(@PathVariable("id") Long id) {
+        indexService.removeMessage(id);
+
+        return "redirect:/page/index";
+    }
+
+    @RequestMapping(value = "/change_password", method = RequestMethod.POST)
+    public @ResponseBody String changePassword(@RequestParam String password) {
+
+        return password;
     }
 }

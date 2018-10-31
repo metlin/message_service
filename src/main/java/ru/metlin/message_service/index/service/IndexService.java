@@ -19,12 +19,18 @@ public class IndexService {
     }
 
     @Transactional
-    public List<Message> messageList() {
+    public List<Message> messageList(Long id) {
 
-        List<Message> list = indexDao.messageList();
+        return indexDao.messageList(id);
+    }
 
-     //   System.out.println("============" + list + "=====================");
+    @Transactional
+    public void removeMessage(Long id) {
+        indexDao.removeMessage(id);
+    }
 
-        return list;
+    @Transactional
+    public void changePassword(Long id) {
+        indexDao.changePassword(id);
     }
 }

@@ -6,9 +6,8 @@ import ru.metlin.message_service.registration.dao.RegistrationDao;
 import ru.metlin.message_service.registration.model.User;
 import ru.metlin.message_service.registration.myException.ExistsUserException;
 import ru.metlin.message_service.registration.request.RegistrationRequest;
-
 import javax.transaction.Transactional;
-import java.util.Set;
+import java.util.List;
 
 @Service
 public class RegistrationService {
@@ -20,25 +19,26 @@ public class RegistrationService {
         this.registrationDao = registrationDao;
     }
 
-    public Set<User> getUsers() {
-        return registrationDao.getUsers();
-    }
-
     public RegistrationService() {
     }
 
     @Transactional
-    public void addUser(RegistrationRequest request) {
+    public List<User> getUsers() {
+        return registrationDao.getUsers();
+    }
+
+    @Transactional
+    public User addUser(RegistrationRequest request) {
 
         User user = new User(request);
 
-        Set<User> userSet = registrationDao.getUsers();
+        List<User> userSet = registrationDao.getUsers();
 
         if (userSet.contains(user)) {
 
             throw new ExistsUserException("The user already exists");
         }
 
-        registrationDao.saveUser(user);
+        return registrationDao.saveUser(user);
     }
 }

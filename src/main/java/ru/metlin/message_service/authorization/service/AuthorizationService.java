@@ -21,12 +21,14 @@ public class AuthorizationService {
     }
 
     @Transactional
-    public void searchByLoginAndPassword(AuthorizationRequest request) {
+    public User searchByLoginAndPassword(AuthorizationRequest request) {
 
         User user = authorizationDao.searchUser(request);
 
         if (user == null) {
             throw new ExistsUserException("User not found");
         }
+
+        return user;
     }
 }

@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -38,7 +39,7 @@ public class User {
     private String password;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<Message> messageList;
+    private List<Message> messageList;
 
     public User(RegistrationRequest request) {
         this.firstName = request.getFirstName();
@@ -111,11 +112,11 @@ public class User {
         this.password = password;
     }
 
-    public Set<Message> getMessageList() {
+    public List<Message> getMessageList() {
         return messageList;
     }
 
-    public void setMessageList(Set<Message> messageList) {
+    public void setMessageList(List<Message> messageList) {
         this.messageList = messageList;
     }
 
