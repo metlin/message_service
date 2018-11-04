@@ -31,11 +31,11 @@ public class RegistrationController {
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public ModelAndView registration() {
-        return new ModelAndView("registration","command", new RegistrationRequest());
+        return new ModelAndView("registration","reg_request", new RegistrationRequest());
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public  String save(@ModelAttribute RegistrationRequest request) {
+    public  String save(@ModelAttribute("reg_request") RegistrationRequest request) {
         User user = registrationService.addUser(request);
 
         return "redirect:/page/index/" + user.getId();

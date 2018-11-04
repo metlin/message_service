@@ -6,7 +6,7 @@
 
 <body>
 <h2>Authorization page</h2>
-<form:form method="post" action="/message_service/page/search">
+<form:form method="post" commandName = "auth_request" action="/message_service/page/search">
   <table>
     <tr>
       <td><form:label path="login">login</form:label></td>

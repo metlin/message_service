@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.metlin.message_service.index.dao.IndexDao;
 import ru.metlin.message_service.index.model.Message;
+import ru.metlin.message_service.registration.model.User;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -25,12 +26,12 @@ public class IndexService {
     }
 
     @Transactional
-    public void removeMessage(Long id) {
-        indexDao.removeMessage(id);
+    public User removeMessage(Long id) {
+        return indexDao.removeMessage(id);
     }
 
     @Transactional
-    public void changePassword(Long id) {
-        indexDao.changePassword(id);
+    public void changePassword(String password, Long id) {
+        indexDao.changePassword(password, id);
     }
 }

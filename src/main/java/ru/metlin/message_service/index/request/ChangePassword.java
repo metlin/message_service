@@ -1,0 +1,43 @@
+package ru.metlin.message_service.index.request;
+
+public class ChangePassword {
+
+    private Long id;
+    private String password;
+
+    public ChangePassword(Long id, String password) {
+        this.id = id;
+        this.password = password;
+    }
+
+    public ChangePassword(Long id) {
+        this.id = id;
+    }
+
+    public ChangePassword() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "ChangePassword{" +
+                "id=" + id +
+                ", password='" + password + '\'' +
+                '}';
+    }
+}

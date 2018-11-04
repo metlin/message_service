@@ -37,20 +37,23 @@ public class IndexDao {
         return messageList;
     }
 
-    public void removeMessage(Long id) {
+    public User removeMessage(Long id) {
         Session session = sessionFactory.getCurrentSession();
         Message message = (Message) session.load(Message.class, id);
-
-        if (message != null) {
-            session.delete(message);
-        }
+        session.delete(message);
 
         logger.info("The message was successfully deleted");
+
+        return message.getUser();
     }
 
-    public void changePassword(Long id) {
+    public void changePassword(String password, Long id) {
         Session session = sessionFactory.getCurrentSession();
-        User user = (User)session.createQuery("FROM User WHERE id = " + id);
+        User user = (User)session.load(User.class, id);
+        user.setPassword(password);
+        session.update(user);
+
+        logger.info("The password change is successful");
     }
 }
 

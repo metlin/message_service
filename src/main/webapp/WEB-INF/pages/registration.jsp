@@ -6,7 +6,7 @@
 
 <body>
 <h2>Registration page</h2>
-<form:form method="post" action="/message_service/page/save">
+<form:form method="post" commandName = "reg_request" action="/message_service/page/save">
   <table>
     <tr>
       <td><form:label path="firstName">first_name</form:label></td>

@@ -23,11 +23,11 @@ public class AuthorizationController {
 
     @RequestMapping(value = "/authorization", method = RequestMethod.GET)
     public ModelAndView authorization() {
-        return new ModelAndView("authorization","command", new AuthorizationRequest());
+        return new ModelAndView("authorization","auth_request", new AuthorizationRequest());
     }
 
     @RequestMapping(value = "/search", method = RequestMethod.POST)
-    public String search(@ModelAttribute AuthorizationRequest request) {
+    public String search(@ModelAttribute("auth_request") AuthorizationRequest request) {
         User user = authorizationService.searchByLoginAndPassword(request);
 
         return "redirect:/page/index/" + user.getId();

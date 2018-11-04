@@ -31,34 +31,33 @@
 
     <br>
     </br>
-    <body>
+
+    <form:form method="post" commandName = "change_password"
+    action="/message_service/page/change_password">
+
+      <table>
+        <tr>
+          <td><form:label path="password">Enter new password</form:label></td>
+          <td><form:input path="password" /></td>
+        </tr>
+
+         <tr style="display:none">
+            <td><form:label path="id">${change_password.id}</form:label></td>
+            <td><form:input path="id" /></td>
+         </tr>
+          <td colspan="2">
+            <input type="submit" value="Change password"/>
+          </td>
+        </tr>
+      </table>
+    </form:form>
+
+     <br>
+     </br>
+     <body>
         <a href ="/message_service/page/authorization">
-           <input type="submit" value="Exit"/>
-        </a>
-    </body>
-
-    <br>
-        </br>
-        <body>
-
-          <input type="submit" value="Change password" onclick = "changePassword()"/>
-
-        </body>
-
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-
-    </script>
-<script type="text/javascript">
-        function changePassword() {
-            $.ajax({
-               uri: '/change_password',
-
-
-            });
-        }
-
-
+            <input type="submit" value="Exit"/>
+         </a>
+     </body>
 </body>
 </html
