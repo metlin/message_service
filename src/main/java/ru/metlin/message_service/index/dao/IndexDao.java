@@ -7,9 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ru.metlin.message_service.index.model.Message;
+import ru.metlin.message_service.index.request.SendMessage;
 import ru.metlin.message_service.registration.model.User;
-
-
 import java.util.List;
 
 @Repository
@@ -54,6 +53,24 @@ public class IndexDao {
         session.update(user);
 
         logger.info("The password change is successful");
+    }
+
+    public void addMessage(SendMessage request) {
+        Session session = sessionFactory.getCurrentSession();
+
+        User userWhom = (User)session.createQuery("FROM User U WHERE U.email = " + "'" +
+                request.getWhom() + "'").uniqueResult();
+
+        User userFrom = (User)session.createQuery("FROM User U WHERE U.email = " + "'" +
+                request.getFromWhom() + "'").uniqueResult();
+
+        userWhom.addMessage(request.getMessage());
+        request.getMessage().setUser(userWhom);
+        request.getMessage().setFromWhom(userFrom.getFirstName());
+
+        session.update(userWhom);
+
+        logger.info("The message has been successfully sent");
     }
 }
 

@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -120,6 +121,14 @@ public class User {
         this.messageList = messageList;
     }
 
+    public void addMessage(Message message) {
+        if (messageList == null) {
+            messageList = new ArrayList<>();
+        }
+
+        messageList.add(message);
+    }
+
     @Override
     public String toString() {
         return "User {" +
@@ -143,6 +152,10 @@ public class User {
         }
 
         if (login.equals(((User) object).login) && password.equals(((User) object).password)) {
+            return true;
+        }
+
+        if (email.equals(((User) object).email)) {
             return true;
         }
 

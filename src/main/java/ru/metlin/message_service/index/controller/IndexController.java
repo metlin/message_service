@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import ru.metlin.message_service.index.model.Message;
 import ru.metlin.message_service.index.request.ChangePassword;
+import ru.metlin.message_service.index.request.SendMessage;
 import ru.metlin.message_service.index.service.IndexService;
 import ru.metlin.message_service.registration.model.User;
 
@@ -46,5 +48,18 @@ public class IndexController {
         indexService.changePassword(request.getPassword(), request.getId());
 
         return "redirect:/page/index/" + request.getId();
+    }
+
+    @RequestMapping(value = "/message", method = RequestMethod.GET)
+    public ModelAndView message() {
+        return new ModelAndView("message","message_request", new SendMessage());
+    }
+
+    @RequestMapping(value = "/send_message", method = RequestMethod.POST)
+    public String sendMessage(@ModelAttribute("message_request") SendMessage request) {
+
+        indexService.sendMessage(request);
+
+        return "redirect:/page/message";
     }
 }

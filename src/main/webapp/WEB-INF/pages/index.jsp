@@ -28,6 +28,14 @@
             </c:forEach>
     </table>
 </c:if>
+     <br>
+     </br>
+
+    <body>
+        <a href ="/message_service/page/message">
+            <input type="submit" value="New message"/>
+        </a>
+    </body>
 
     <br>
     </br>

@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS Message (
 
     id          BIGINT PRIMARY KEY AUTO_INCREMENT,
     date_time   datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    from_whom   VARCHAR(50) NOT NULL,
+    from_whom   VARCHAR(50)  NOT NULL,
     message     VARCHAR(250) NOT NULL,
     user_id     BIGINT NOT NULL
 );

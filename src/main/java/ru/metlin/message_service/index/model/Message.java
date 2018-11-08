@@ -1,5 +1,7 @@
 package ru.metlin.message_service.index.model;
 
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
 import ru.metlin.message_service.registration.model.User;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +15,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import java.sql.Timestamp;
+import java.util.Date;
 
 @Entity
 @Table(name = "message")
@@ -23,8 +26,10 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "date_time")
-    private Timestamp dateTime;
+    @Column(name = "date_time", columnDefinition="DATETIME")
+    @Temporal(TemporalType.TIMESTAMP)
+    @Generated(value = GenerationTime.ALWAYS)
+    private Date dateTime;
 
     @Column(name = "from_whom")
     private String fromWhom;
@@ -39,10 +44,14 @@ public class Message {
     public Message() {
     }
 
-    public Message(Long id, Timestamp dateTime, String fromWhom, String message) {
+    public Message(Long id, Date dateTime, String fromWhom, String message) {
         this.id = id;
         this.dateTime = dateTime;
         this.fromWhom = fromWhom;
+        this.message = message;
+    }
+
+    public Message(String message) {
         this.message = message;
     }
 
@@ -54,14 +63,15 @@ public class Message {
         this.id = id;
     }
 
-    public Timestamp getDateTime() {
+    public Date getDateTime() {
+      //  dateTime = new java.sql.Timestamp(new java.util.Date().getTime());
+
         return dateTime;
     }
 
-    public void setDateTime(Timestamp dateTime) {
-        dateTime = new java.sql.Timestamp(new java.util.Date().getTime());
+    public void setDateTime(Date dateTime) {
 
-        this.dateTime = dateTime;
+        this.dateTime = dateTime; // new java.sql.Timestamp(new java.util.Date().getTime());
     }
 
     public String getFromWhom() {
