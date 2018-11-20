@@ -22,12 +22,14 @@ public class IndexController {
     @Autowired
     private IndexService indexService;
 
+
     public IndexController(IndexService indexService) {
         this.indexService = indexService;
     }
 
     @RequestMapping(value = "/index/{id}", method = RequestMethod.GET)
     public String index(Model model, @PathVariable("id") Long id) {
+        model.addAttribute("user", indexService.getById(id));
         model.addAttribute("message", new Message());
         model.addAttribute("messageList", indexService.messageList(id));
         model.addAttribute("change_password", new ChangePassword(id));

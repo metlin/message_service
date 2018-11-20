@@ -12,8 +12,8 @@
 <form:form method="post" commandName = "message_request" action="/message_service/page/send_message">
   <table>
     <tr>
-        <td><form:label path="fromWhom">from(email)</form:label></td>
-        <td><form:input path="fromWhom" /></td>
+        <td><form:label path= "fromWhom">from(email)</form:label></td>
+        <td><form:input path= "fromWhom"/></td>
     </tr>
     <tr>
         <td><form:label path="whom">whom(email)</form:label></td>

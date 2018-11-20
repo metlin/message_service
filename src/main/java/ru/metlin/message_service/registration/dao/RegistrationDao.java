@@ -1,7 +1,9 @@
 package ru.metlin.message_service.registration.dao;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,11 +30,11 @@ public class RegistrationDao {
     @SuppressWarnings("unchecked")
     public List<User> getUsers() {
         Session session = sessionFactory.getCurrentSession();
-
-        List<User> userList = session.createQuery("FROM User").list();
+        Criteria criteria = session.createCriteria(User.class);
+        List<User> userList = criteria.list();
 
         for (User user : userList) {
-            logger.info("User list - " + userList);
+            logger.info("User list - " + user);
         }
 
         return userList;
@@ -43,10 +45,12 @@ public class RegistrationDao {
         session.save(user);
 
         logger.info("The user is successfully saved");
-        
-        return  (User)session.createQuery("FROM User U WHERE U.login = " + "'" + user.getLogin() + "'" +
-                " AND U.password = " + "'" + user.getPassword() + "'").uniqueResult();
 
+        Criteria criteria = session.createCriteria(User.class);
+        User foundUser = (User)criteria.add(Restrictions.eq("login", user.getLogin())).uniqueResult();
 
+        logger.info("User found " + foundUser);
+
+        return foundUser;
     }
 }

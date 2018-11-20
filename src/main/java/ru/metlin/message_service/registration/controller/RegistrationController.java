@@ -40,9 +40,4 @@ public class RegistrationController {
 
         return "redirect:/page/index/" + user.getId();
     }
-
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public @ResponseBody List<User> getAllUsers() {
-        return registrationService.getUsers();
-    }
 }

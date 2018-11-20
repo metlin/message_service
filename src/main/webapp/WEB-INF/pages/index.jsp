@@ -4,7 +4,7 @@
 
 <html>
 <body>
-<h2>Message list</h2>
+<h2>List of messages by ${user.firstName} ${user.lastName}</h2>
 
 <c:if test = "${!empty messageList}">
 

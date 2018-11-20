@@ -64,14 +64,13 @@ public class Message {
     }
 
     public Date getDateTime() {
-      //  dateTime = new java.sql.Timestamp(new java.util.Date().getTime());
 
         return dateTime;
     }
 
     public void setDateTime(Date dateTime) {
 
-        this.dateTime = dateTime; // new java.sql.Timestamp(new java.util.Date().getTime());
+        this.dateTime = dateTime;
     }
 
     public String getFromWhom() {

@@ -38,10 +38,12 @@ public class IndexService {
 
     @Transactional
     public void sendMessage(SendMessage request) {
-        System.out.println("==============================================");
-        System.out.println(request);
-        System.out.println("==============================================");
 
         indexDao.addMessage(request);
+    }
+
+    @Transactional
+    public User getById(Long id) {
+        return indexDao.findById(id);
     }
 }
