@@ -7,9 +7,7 @@
 <h2>List of messages by ${user.firstName} ${user.lastName}</h2>
 
 <c:if test = "${!empty messageList}">
-
     <table border = "2">
-
         <tr>
             <th width = "50">ID</th>
             <th>Date_time</th>

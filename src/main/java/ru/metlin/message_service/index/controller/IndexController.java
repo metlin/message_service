@@ -22,7 +22,6 @@ public class IndexController {
     @Autowired
     private IndexService indexService;
 
-
     public IndexController(IndexService indexService) {
         this.indexService = indexService;
     }

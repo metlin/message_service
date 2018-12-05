@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import ru.metlin.message_service.authorization.request.AuthorizationRequest;
 import ru.metlin.message_service.registration.model.User;
 
-@Repository
+@Repository("authorizationDao")
 public class AuthorizationDao {
 
     private static final Logger logger = LoggerFactory.getLogger(AuthorizationDao.class);
@@ -32,5 +32,9 @@ public class AuthorizationDao {
         logger.info("User found " + user);
 
         return user;
+    }
+
+    public SessionFactory getSessionFactory() {
+        return sessionFactory;
     }
 }
