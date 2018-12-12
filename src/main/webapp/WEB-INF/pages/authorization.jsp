@@ -75,7 +75,7 @@
     </tr>
      <tr>
         <td>
-          <input type="submit" value="Sign in" class="submit"/>
+          <input type="submit" value="Sign in" class= "submit"/>
         </td>
     </tr>
     </form:form>

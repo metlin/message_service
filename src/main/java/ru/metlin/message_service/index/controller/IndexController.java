@@ -32,6 +32,7 @@ public class IndexController {
         model.addAttribute("message", new Message());
         model.addAttribute("messageList", indexService.messageList(id));
         model.addAttribute("change_password", new ChangePassword(id));
+        model.addAttribute("message_request", new SendMessage());
 
         return "index";
     }
@@ -51,16 +52,11 @@ public class IndexController {
         return "redirect:/page/index/" + request.getId();
     }
 
-    @RequestMapping(value = "/message", method = RequestMethod.GET)
-    public ModelAndView message() {
-        return new ModelAndView("message","message_request", new SendMessage());
-    }
-
     @RequestMapping(value = "/send_message", method = RequestMethod.POST)
     public String sendMessage(@ModelAttribute("message_request") SendMessage request) {
 
         indexService.sendMessage(request);
 
-        return "redirect:/page/message";
+        return "redirect:/page/index/" + request.getId();
     }
 }

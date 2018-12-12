@@ -1,6 +1,5 @@
 package ru.metlin.message_service.authorization.service;
 
-import org.hibernate.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.metlin.message_service.authorization.dao.AuthorizationDao;
