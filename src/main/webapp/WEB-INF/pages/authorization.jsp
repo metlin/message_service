@@ -54,8 +54,8 @@
          <h2>Authorization</h2>
       </td>
     </tr> 
-     <tr><td bgcolor="#5399aa"><br></td></tr>
-     <tr><td><br></td></tr>   
+    <tr><td bgcolor="#5399aa"><br></td></tr>
+    <tr><td><br></td></tr>   
     
     <tr>
       <td>
